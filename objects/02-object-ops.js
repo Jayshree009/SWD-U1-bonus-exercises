@@ -87,7 +87,19 @@ for (let restaurant of restaurants) {
 */
 
 // TODO: create objects and put them in an array
+let zoo = {
+	name: "STL Zoo",
+	location: "1 Govt Dr, St Louis,MO",
+	knownFor: ["Best Zoo in the United states","Free entry"],
+};
 
+let botanicalGarden = {
+	name: "STL Botanical Garden",
+	location: "4344 Shaw Blvd, St Louis,MO",
+	knownFor: ["Beautiful gardens","Childrens", "Events celebrating diff nation's cultures"],
+};
+
+let attractions = [zoo, botanicalGarden];
 /*
 	Loop through the array, then within that for loop, use a for...in loop to grab values from each key and print them to the console. If you come across a key storing an array, print each element in the array instead of the array itself. Remember that you need a new index variable with each nested FOR loop (i, j are common).
 
@@ -95,6 +107,27 @@ for (let restaurant of restaurants) {
 */
 
 // TODO: use nested loops to print values inside objects
+
+/*for (let aKey in attractions) {
+    if (Array.isArray(attractions[aKey])) {
+        for (el of attractions[aKey]) {
+            console.log(el);
+            console.log("Testing");
+        }
+    }
+}*/
+//I am not able to understand this ode
+for (let aKey in attractions) {
+    if (Array.isArray(attractions[aKey])) {
+        for (let el of attractions[aKey]) {
+            // el is an object, so we loop through its keys
+            for (let innerKey in el) {
+                console.log(`${innerKey}: ${el[innerKey]}`);
+            }
+            console.log("-----"); // separator for readability
+        }
+    }
+}
 
 /*
 	Last task: loop through the outer array and print a single template literal for each attraction using placeholders referencing the object at each index. Here's an example:
@@ -107,3 +140,6 @@ for (let restaurant of restaurants) {
 
 // TODO: Print a template literal
 
+for (let attraction of attractions) {
+    console.log(`\nIf you are in St. Louis, don't forget to visit ${attraction.name} in ${attraction.location}, best known for ${attraction.knownFor[0]}, ${attraction.knownFor[1]}\n`);
+    }
